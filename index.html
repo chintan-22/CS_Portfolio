@@ -1,0 +1,890 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeRdevelopers</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/QvmxvDz3/6e098dd3-a2f7-4d04-9130-b9952be96389.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-animation"></div>
+    <div class="floating-elements" id="floatingElements"></div>
+    <nav id="mainNav">
+        <div class="container nav-container">
+            <a href="#" class="logo">WeRDevelopers</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#education">Education</a>
+                <a href="#journey">Journey</a>
+                <a href="#skills">Skills</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#home" onclick="closeMobileMenu()">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="#education" onclick="closeMobileMenu()">
+                <i class="fas fa-graduation-cap"></i> Education
+            </a>
+            <a href="#journey" onclick="closeMobileMenu()">
+                <i class="fas fa-road"></i> Journey
+            </a>
+            <a href="#skills" onclick="closeMobileMenu()">
+                <i class="fas fa-code"></i> Skills
+            </a>
+        </div>
+
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>Hey! This is <span>WeRDeveloper</span></h1>
+                    <p>A web developer who loves creating websites and Telegram bots. I focus on clean design, smooth functionality, and smart automation to make things easier.</p>
+                    <a href="#journey" class="cta-button">Explore My Journey</a>
+                </div>
+                <div class="hero-visual fade-in">
+                    <div class="floating-card">
+                        <div class="card-content">
+                            <div class="profile-avatar">
+                                <img src="https://i.ibb.co/QvmxvDz3/6e098dd3-a2f7-4d04-9130-b9952be96389.png" alt="Profile Image">
+                            </div>
+                            <h3>Deep AKA "WeRDeveloper"</h3>
+                            <p>Full Stack Developer</p>
+                            <div class="location-chip">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Tripura, India</span>
+                            </div>
+                            <div
+                                style="margin-top: 20px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 10px; width: 100%;">
+                                <p style="font-size: 0.9rem; margin-bottom: 5px;"><strong>Coding Since:</strong></p>
+                                <p style="font-size: 1.2rem; font-weight: 600; color: var(--accent);">2018</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-down">
+            <a href="#education">
+                <i class="fas fa-chevron-down"></i>
+                <span>Scroll Down</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Education Status</h2>
+                <p>You can read this to know more about me.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="glass-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="card-title">Bachelor of Computer Applications (BCA)</h3>
+                    <p>I have completed my BCA from Techno College Of Engineering Agartala (TCEA) and am currently working as a Software Engineer in a private organization.</p>
+                    <div style="margin-top: 20px; display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 10px; height: 10px; background: var(--accent); border-radius: 50%;"></div>
+                        <span>Status: <strong>Corporate employee</strong></span>
+                    </div>
+                </div>
+
+                <div class="glass-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="card-title">Self-Taught Developer</h3>
+                    <p>Learning programming through online resources, hands-on projects, and consistent practice.
+                        Balancing academic studies with coding passion.</p>
+                    <div style="margin-top: 20px; display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 10px; height: 10px; background: var(--primary); border-radius: 50%;"></div>
+                        <span>Learning Method: <strong>Online & Self-Study</strong></span>
+                    </div>
+                </div>
+
+                <div class="glass-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="card-title">Future Goals</h3>
+                    <p>My future goal is to make my parents happy and provide them with a good and luxurious life. My biggest dream is to see them happy and fulfilled.</p>
+                    <div style="margin-top: 20px; display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 10px; height: 10px; background: var(--secondary); border-radius: 50%;"></div>
+                        <span>Status: <strong>Work in progress</strong></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="journey" class="journey">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>My Coding Journey</h2>
+                <p>Started in 2019 and still going strong. Here's how my development journey has progressed.</p>
+            </div>
+
+            <div class="journey-timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content">
+                        <h3 style="margin-bottom: 10px; color: white;">The Beginning</h3>
+                        <p>After completing my 12th board exams, I passed with 77.8% in the Science stream. Then I got admission to Techno College of Agartala. During that time, I also started learning HTML, CSS, JavaScript, etc. However, I was very confused at that phase of my life.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h3 style="margin-bottom: 10px; color: white;">Exploring Languages</h3>
+                        <p>Expanded my knowledge by learning Python, Java, and C++. Explored core programming concepts
+                            like data structures, algorithms, and object-oriented programming.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3 style="margin-bottom: 10px; color: white;">Backend</h3>
+                        <p>Slowly, I started moving forward in full-stack development. There were many technologies and languages involved, such as PHP, React js, Django, Flask, and more...</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h3 style="margin-bottom: 10px; color: white;">Current Focus</h3>
+                        <p>After graduation, I got a job at a private organization, and I feel this marked an important step in my journey. I received an offer from a private company on 7th September 2025. Now, I am working there and focusing on my future goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Programming Skills</h2>
+                <p>Languages and technologies I've learned since starting my journey in 2022</p>
+            </div>
+
+            <div class="skills-container">
+
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div>
+                            <h3 style="color: white; margin-bottom: 5px;">Full-stack</h3>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Broadening my skillset</p>
+                        </div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">PHP</div>
+                        <div class="skill-item">React js</div>
+                        <div class="skill-item">Django</div>
+                        <div class="skill-item">Java</div>
+                        <div class="skill-item">Flask</div>
+                        <div class="skill-item">Git</div>
+                    </div>
+                    <p style="margin-top: 20px;">Now, as a full-stack developer, I can build websites from frontend to backend. I enjoy creating dynamic, user-friendly web applications and constantly improving my skills with new technologies.</p>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div>
+                            <h3 style="color: white; margin-bottom: 5px;">Python</h3>
+                            <p style="color: var(--gray); font-size: 0.9rem;">My primary language</p>
+                        </div>
+                    </div>
+                    <p>Python is my favorite and most proficient language. I've used it for various projects including
+                        data analysis, automation, and web development.</p>
+                    <div
+                        style="margin-top: 20px; padding: 15px; background: rgba(48, 105, 152, 0.1); border-radius: 10px; border-left: 4px solid var(--python-blue);">
+                        <p style="font-size: 0.9rem; color: white;"><strong>Why Python?</strong> Its simplicity,
+                            readability, and vast ecosystem make it perfect for turning ideas into solutions quickly.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div>
+                            <h3 style="color: white; margin-bottom: 5px;">Learning Path</h3>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Continuous growth</p>
+                        </div>
+                    </div>
+                    <p>My journey has been focused on practical learning through projects. Each language has contributed
+                        to my growth as a developer.</p>
+                    <div
+                        style="margin-top: 20px; padding: 15px; background: rgba(99, 102, 241, 0.1); border-radius: 10px;">
+                        <p style="font-size: 0.9rem; color: white;"><strong>Next Steps:</strong> As I mention my future goals, I also want to share some ideas and my mistakes as a YouTuber.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h2 style="font-size: 1.8rem; margin-bottom: 10px; background: var(--gradient-1); -webkit-background-clip: text; background-clip: text; color: transparent;">
+                        <a href="https://www.youtube.com/@WeRdevelopers" style="text-decoration: none; color: inherit;">WeRDevelopers</a></h2>
+                    <p style="color: var(--gray);">A Full Stack Developer from Tripura</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="https://telegram.me/WeRdevelopers" class="social-link"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy;
+                    <script>document.write(new Date().getFullYear())</script> <b>WeRDevelopers</b>, All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+<script src="script.js"></script>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chintan Shah | Portfolio</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/QvmxvDz3/6e098dd3-a2f7-4d04-9130-b9952be96389.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-animation"></div>
+    <div class="floating-elements" id="floatingElements"></div>
+
+    <nav id="mainNav">
+        <div class="container nav-container">
+            <a href="#" class="logo">Chintan Shah</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#education">Education</a>
+                <a href="#journey">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#awards">Awards</a>
+                <a href="#certifications">Certifications</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#home" onclick="closeMobileMenu()">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="#education" onclick="closeMobileMenu()">
+                <i class="fas fa-graduation-cap"></i> Education
+            </a>
+            <a href="#journey" onclick="closeMobileMenu()">
+                <i class="fas fa-briefcase"></i> Experience
+            </a>
+            <a href="#skills" onclick="closeMobileMenu()">
+                <i class="fas fa-code"></i> Skills
+            </a>
+            <a href="#awards" onclick="closeMobileMenu()">
+                <i class="fas fa-award"></i> Awards
+            </a>
+            <a href="#certifications" onclick="closeMobileMenu()">
+                <i class="fas fa-certificate"></i> Certifications
+            </a>
+        </div>
+
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>Hey! I’m <span>Chintan Shah</span></h1>
+                    <p>
+                        I build data-driven products end-to-end from data modeling and ETL pipelines to dashboards, ML/NLP systems, and modern web experiences. I’m currently exploring roles in <strong>Data/Business Analytics</strong>, <strong>Project/Product</strong>,
+                        <strong>GenAI Development</strong>, and <strong>Full Stack Development</strong>.
+                    </p>
+                    <a href="#journey" class="cta-button">Explore My Work</a>
+                </div>
+
+                <div class="hero-visual fade-in">
+                    <div class="floating-card">
+                        <div class="card-content">
+
+                            <h3>Chintan Nilesh Shah</h3>
+                            <p>Data + Full Stack | GenAI-Ready</p>
+
+                            <div class="location-chip">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>College Station, TX</span>
+                            </div>
+
+                            <div style="margin-top: 20px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 10px; width: 100%;">
+                                <p style="font-size: 0.9rem; margin-bottom: 5px;"><strong>Currently:</strong></p>
+                                <p style="font-size: 1.05rem; font-weight: 600; color: var(--accent);">
+                                    MS MIS @ Texas A&M (Aug 2025 – May 2027)
+                                </p>
+                            </div>
+
+                            <div style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; width: 100%;">
+                                <a href="mailto:shahchintan0204@gmail.com" class="cta-button" style="padding: 10px 14px; font-size: 0.9rem;">
+                                    <i class="fas fa-envelope"></i> Email
+                                </a>
+                                <!-- Replace # with your real LinkedIn/GitHub URLs -->
+                                <a href="https://www.linkedin.com/in/chintanshah02/" class="cta-button" style="padding: 10px 14px; font-size: 0.9rem; background: rgba(255,255,255,0.08);">
+                                    <i class="fab fa-linkedin"></i> LinkedIn
+                                </a>
+                                <a href="https://github.com/chintan-22" class="cta-button" style="padding: 10px 14px; font-size: 0.9rem; background: rgba(255,255,255,0.08);">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-down">
+            <a href="#education">
+                <i class="fas fa-chevron-down"></i>
+                <span>Scroll Down</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Education</h2>
+                <p>A strong foundation in systems, data, and product execution.</p>
+            </div>
+
+            <div class="cards-grid">
+
+                <div class="glass-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="card-title">M.S. in Management Information Systems (MS MIS)</h3>
+                    <p>
+                        Texas A&amp;M University, Mays Business School (Aug 2025 – May 2027). Focused on building scalable systems and data products.
+                    </p>
+                    <div style="margin-top: 16px; display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 10px; height: 10px; background: var(--accent); border-radius: 50%;"></div>
+                        <span>Relevant: <strong>Advanced DBMS, Systems Analysis &amp; Design, Project Management</strong></span>
+                    </div>
+                </div>
+
+                <div class="glass-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="card-title">B.Tech in Computer Engineering (Honors: Intelligent Computing)</h3>
+                    <p>
+                        D. J. Sanghvi College of Engineering, University of Mumbai (Aug 2021 – May 2025). Built a strong base in analytics, AI, and data systems.
+                    </p>
+                    <div style="margin-top: 16px; display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 10px; height: 10px; background: var(--primary); border-radius: 50%;"></div>
+                        <span>GPA: <strong>3.57 / 4</strong></span>
+                    </div>
+                </div>
+
+                <div class="glass-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="card-title">What I’m Building Toward</h3>
+                    <p>
+                        I want to work on teams that ship real outcomes: better decisions, faster workflows, and cleaner experiences powered by analytics, automation, and AI.
+                    </p>
+                    <div style="margin-top: 16px; display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 10px; height: 10px; background: var(--secondary); border-radius: 50%;"></div>
+                        <span>Targets: <strong>Data/Business Analyst • PM/PMM • GenAI Dev • Full Stack</strong></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="journey" class="journey">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Experience & Journey</h2>
+                <p>Hands-on work across analytics, web development, automation, and applied ML.</p>
+            </div>
+            <div class="journey-timeline">
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">Now</div>
+                    <div class="timeline-content">
+                        <h3 style="margin-bottom: 10px; color: white;">Web Developer (Texas A&amp;M)</h3>
+                        <p>
+                            At the Dean of Veterinary Medicine, I’m migrating websites to modern Aggie UI/UX, improving accessibility, and refactoring HTML/CSS/JS to boost maintainability and standardize content for faster future updates.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h3 style="margin-bottom: 10px; color: white;">Data Analyst Intern</h3>
+                        <p>
+                            At ASAP Advisors, I built real-time dashboards for diamond merchants and automated billing workflows using Power Apps, cutting process time significantly and reducing manual work. I also began my MS MIS at Texas A&amp;M to deepen product, systems, and
+                            analytics skills.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3 style="margin-bottom: 10px; color: white;">Data Analyst Intern</h3>
+                        <p>
+                            At CodTech IT Solutions, I used Python (pandas, NumPy, scikit-learn) to clean/analyze large datasets and built ML/deep learning models (e.g., stock prediction and customer behavior analysis) with strong accuracy.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3 style="margin-bottom: 10px; color: white;">Frontend Developer</h3>
+                        <p>
+                            At MindTech Solutions, I maintained and improved production websites, reduced recurring issues, improved performance (faster page loads), and helped ship work on-time with better customer outcomes.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+
+    <section id="projects" class="education">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Projects &amp; Publications</h2>
+                <p>Work across real-time ML, NLP/GenAI, privacy engineering, and applied computer vision.</p>
+            </div>
+
+            <!-- PROJECTS -->
+            <h3 class="fade-in" style="color: white; margin: 10px 0 18px 0;">Projects</h3>
+
+            <div class="cards-grid projects-grid">
+                <!-- Featured: CMIS Engagement Platform -->
+                <div class="glass-card fade-in featured-card">
+                    <div class="card-icon"><i class="fas fa-trophy"></i></div>
+                    <h3 class="card-title">CMIS Engagement Platform (AI + Automation)</h3>
+                    <p style="margin-bottom: 12px;">
+                        A full-featured engagement platform for the CMIS program at Texas A&amp;M University, featuring
+                        <strong>AI-powered student–mentor matching</strong>, event management, and automated workflows. Built with <strong>Python, Streamlit, MongoDB, and Groq AI</strong>.
+                    </p>
+                    <div class="featured-badge">
+                        <i class="fas fa-award"></i>
+                        <span>2nd Place — 2025 CMIS Case Competition</span>
+                    </div>
+                    <div class="skill-items" style="margin-top: 14px;">
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">Streamlit</div>
+                        <div class="skill-item">MongoDB Atlas</div>
+                        <div class="skill-item">Groq API</div>
+                        <div class="skill-item">n8n</div>
+                        <div class="skill-item">Role-based dashboards</div>
+                    </div>
+                </div>
+
+                <!-- Featured: AetherMart ETL -->
+                <div class="glass-card fade-in featured-card">
+                    <div class="card-icon"><i class="fas fa-database"></i></div>
+                    <h3 class="card-title">AetherMart ETL &amp; Data Cleansing Pipeline</h3>
+                    <p style="margin-bottom: 12px;">
+                        Built a <strong>MariaDB ETL pipeline</strong> integrating multi-source CSV data into a
+                        <strong>6-table relational schema</strong>. Ensured <strong>99% data integrity</strong> by fixing
+                        <strong>6,500+</strong> issues using <strong>REGEXP + SQL</strong>.
+                    </p>
+                    <div class="featured-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Featured Data Engineering Project</span>
+                    </div>
+                    <div class="skill-items" style="margin-top: 14px;">
+                        <div class="skill-item">MariaDB</div>
+                        <div class="skill-item">SQL</div>
+                        <div class="skill-item">ETL</div>
+                        <div class="skill-item">Schema Design</div>
+                        <div class="skill-item">Data Quality</div>
+                        <div class="skill-item">REGEXP</div>
+                    </div>
+                </div>
+
+                <!-- Soil Nutrients -->
+                <div class="glass-card fade-in">
+                    <div class="card-icon"><i class="fas fa-seedling"></i></div>
+                    <h3 class="card-title">Real-Time Soil Nutrients Prediction + Crop Recommendation (Under Review)</h3>
+                    <p>
+                        Real-time ML using sensor data to predict soil nutrients and recommend crops. Reduced turnaround time for farmers by <strong>~80%</strong> vs lab-testing workflows.
+                    </p>
+                    <div class="skill-items" style="margin-top: 14px;">
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">ML pipelines</div>
+                        <div class="skill-item">Preprocessing</div>
+                        <div class="skill-item">Model evaluation</div>
+                    </div>
+                </div>
+
+                <!-- Emotional Support Chatbot -->
+                <div class="glass-card fade-in">
+                    <div class="card-icon"><i class="fas fa-comments"></i></div>
+                    <h3 class="card-title">Enhancing Emotional Support Chatbot</h3>
+                    <p>
+                        Upgraded a chatbot with <strong>Flan-T5 XL</strong> for sentiment + cognitive reframing. Improved accuracy (<strong>+35%</strong>) and engagement (<strong>+40%</strong>).
+                    </p>
+                    <div class="skill-items" style="margin-top: 14px;">
+                        <div class="skill-item">NLP</div>
+                        <div class="skill-item">Transformers</div>
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">Secure handling</div>
+                    </div>
+                </div>
+
+                <!-- Accessibility Makeathon App -->
+                <div class="glass-card fade-in">
+                    <div class="card-icon"><i class="fas fa-universal-access"></i></div>
+                    <h3 class="card-title">Accessible Study Material Transformer (Makeathon)</h3>
+                    <p>
+                        Ingests audio/text/PDF/PPT and converts content into accessible formats using
+                        <strong>Google Labs (Opal, Stitch, AI Studio)</strong>.
+                    </p>
+                    <div class="skill-items" style="margin-top: 14px;">
+                        <div class="skill-item">Opal</div>
+                        <div class="skill-item">Stitch</div>
+                        <div class="skill-item">AI Studio</div>
+                        <div class="skill-item">Accessible UI</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PUBLICATIONS -->
+            <h3 class="fade-in" style="color: white; margin: 34px 0 18px 0;">Publications (Published)</h3>
+
+            <div class="cards-grid publications-grid">
+                <!-- Homomorphic Encryption -->
+                <div class="glass-card fade-in">
+                    <div class="card-icon"><i class="fas fa-lock"></i></div>
+                    <h3 class="card-title">Simplified Homomorphic Encryption for Addition</h3>
+                    <p>
+                        Proposed privacy-preserving addition over encrypted inputs, enabling computation with
+                        <strong>zero data exposure</strong> for sensitive records.
+                    </p>
+                    <div class="skill-items" style="margin-top: 14px;">
+                        <div class="skill-item">Applied cryptography</div>
+                        <div class="skill-item">Privacy engineering</div>
+                        <div class="skill-item">Secure computation</div>
+                        <div class="skill-item">Encryption</div>
+                    </div>
+                </div>
+
+                <!-- Multilingual Medical NLP -->
+                <div class="glass-card fade-in">
+                    <div class="card-icon"><i class="fas fa-file-lines"></i></div>
+                    <h3 class="card-title">Multilingual Medical Terminology Extraction + Translation</h3>
+                    <p>Built multilingual NLP pipelines for entity recognition + translation in clinical text.</p>
+                    <div class="skill-items" style="margin-top: 14px;">
+                        <div class="skill-item">NLP</div>
+                        <div class="skill-item">Entity extraction</div>
+                        <div class="skill-item">Translation</div>
+                        <div class="skill-item">Clinical text</div>
+                    </div>
+                </div>
+
+                <!-- Drowsy Driving -->
+                <div class="glass-card fade-in">
+                    <div class="card-icon"><i class="fas fa-car"></i></div>
+                    <h3 class="card-title">Drowsy Driving Detection (OpenCV + Cloud Alerts)</h3>
+                    <p>Real-time driver drowsiness detection with safety alerts using <strong>Twilio API</strong>.</p>
+                    <div class="skill-items" style="margin-top: 14px;">
+                        <div class="skill-item">OpenCV</div>
+                        <div class="skill-item">ML</div>
+                        <div class="skill-item">Twilio API</div>
+                        <div class="skill-item">Cloud alerts</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Skills</h2>
+                <p>My toolbox for analytics, product execution, GenAI/ML, and full stack delivery.</p>
+            </div>
+
+            <div class="skills-container">
+
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3 style="color: white; margin-bottom: 5px;">Data & Analytics</h3>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Dashboards • modeling • decision support</p>
+                        </div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">SQL</div>
+                        <div class="skill-item">NoSQL</div>
+                        <div class="skill-item">MariaDB</div>
+                        <div class="skill-item">Excel</div>
+                        <div class="skill-item">Power BI</div>
+                        <div class="skill-item">Tableau</div>
+                        <div class="skill-item">Data Cleaning</div>
+                        <div class="skill-item">ETL</div>
+                    </div>
+                    <p style="margin-top: 20px;">
+                        I enjoy turning messy data into clean models, reliable dashboards, and insights that help teams move faster.
+                    </p>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div>
+                            <h3 style="color: white; margin-bottom: 5px;">Python + ML/NLP</h3>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Automation • modeling • applied AI</p>
+                        </div>
+                    </div>
+                    <p>
+                        I use Python for analytics workflows, automation, and building ML/NLP prototypes that can scale into real products.
+                    </p>
+                    <div class="skill-items" style="margin-top: 16px;">
+                        <div class="skill-item">pandas</div>
+                        <div class="skill-item">NumPy</div>
+                        <div class="skill-item">scikit-learn</div>
+                        <div class="skill-item">NLP Pipelines</div>
+                        <div class="skill-item">OpenCV</div>
+                    </div>
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(48, 105, 152, 0.1); border-radius: 10px; border-left: 4px solid var(--python-blue);">
+                        <p style="font-size: 0.9rem; color: white;">
+                            <strong>GenAI edge:</strong> Certified in AWS Academy Generative AI Foundations and actively exploring practical GenAI workflows.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div>
+                            <h3 style="color: white; margin-bottom: 5px;">Full Stack & Tools</h3>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Web • integration • productivity</p>
+                        </div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">ReactJS</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">HTML/CSS</div>
+                        <div class="skill-item">Java</div>
+                        <div class="skill-item">Git</div>
+                        <div class="skill-item">VS Code</div>
+                        <div class="skill-item">Hadoop</div>
+                        <div class="skill-item">n8n</div>
+                    </div>
+                    <p style="margin-top: 20px;">
+                        I like building polished, responsive web experiences and connecting them to data systems, dashboards, and automation so teams can ship faster.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="awards" class="education">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Awards &amp; Honors</h2>
+                <p>Highlights from competitions where I shipped real, working products under constraints.</p>
+            </div>
+
+            <div class="cards-grid">
+
+                <!-- CMIS Engagement Platform -->
+                <div class="glass-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="card-title">2nd Place Overall — 2025 CMIS Case Competition (Texas A&amp;M)</h3>
+                    <p style="margin-bottom: 14px;">
+                        <strong>CMIS Engagement Platform:</strong> A full-featured engagement platform for the CMIS program, featuring AI-powered student–mentor matching, event management, and automated workflows. Built with <strong>Python, Streamlit, MongoDB, Groq AI</strong>.
+                    </p>
+
+                    <div class="skill-items" style="margin-top: 8px;">
+                        <div class="skill-item">AI mentor matching engine</div>
+                        <div class="skill-item">End-to-end automation</div>
+                        <div class="skill-item">Role-based dashboards</div>
+                        <div class="skill-item">Workflow orchestration (n8n)</div>
+                        <div class="skill-item">Clean UI + scalable structure</div>
+                    </div>
+
+                    <div style="margin-top: 18px; display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 10px; height: 10px; background: var(--accent); border-radius: 50%;"></div>
+                        <span>Recognized for: <strong>technical execution, automation, and AI-driven matching</strong></span>
+                    </div>
+                </div>
+
+                <!-- Google Labs x Aggies-in-Tech Makeathon -->
+                <div class="glass-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="card-title">3rd Prize — Google Labs x Aggies-in-Tech Makeathon 2025</h3>
+                    <p style="margin-bottom: 14px;">
+                        Built an accessibility-first app that ingests study material (<strong>audio, text, PDFs, PPTs</strong>) and transforms it into a fully accessible experience using <strong>Google Labs (Opal, Stitch, AI Studio)</strong>.
+                    </p>
+
+                    <div style="margin-top: 14px; padding: 14px; background: rgba(99, 102, 241, 0.1); border-radius: 10px;">
+                        <p style="font-size: 0.95rem; color: white; margin-bottom: 10px;"><strong>Accessibility modes:</strong></p>
+                        <p style="color: var(--gray); margin: 0 0 10px 0;">
+                            <strong>Dyslexia:</strong> simplify language, apply OpenDyslexic font, generate text-to-speech audio
+                        </p>
+                        <p style="color: var(--gray); margin: 0 0 10px 0;">
+                            <strong>Anxiety:</strong> Focus Mode UI, chunk text into digestible paragraphs, calmer animations
+                        </p>
+                        <p style="color: var(--gray); margin: 0;">
+                            <strong>Color Blindness:</strong> high-contrast theme, AI-generated alt-text, non-color labels for visuals
+                        </p>
+                    </div>
+
+                    <div class="skill-items" style="margin-top: 14px;">
+                        <div class="skill-item">AI transformation pipeline</div>
+                        <div class="skill-item">Multi-format ingestion</div>
+                        <div class="skill-item">Accessible UI/UX</div>
+                        <div class="skill-item">Alt-text generation</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="certifications" class="skills">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Certifications</h2>
+                <p>Credentials that support my work across analytics, AI, and product delivery.</p>
+            </div>
+
+            <div class="skills-container">
+
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div>
+                            <h3 style="color: white; margin-bottom: 5px;">AWS AI Practitioner</h3>
+                            <p style="color: var(--gray); font-size: 0.9rem;">AI foundations • responsible AI • real-world use cases</p>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 10px;">
+                        Validates my understanding of core AI concepts, common model types, practical GenAI workflows, and how to apply AI responsibly in real products.
+                    </p>
+
+                    <!-- Optional: add verification link -->
+                    <!--
+        <a href="#" class="cta-button" style="margin-top: 12px; display: inline-flex; gap: 8px; align-items: center;">
+          <i class="fas fa-arrow-up-right-from-square"></i> View Credential
+        </a>
+        -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h2 style="font-size: 1.8rem; margin-bottom: 10px; background: var(--gradient-1); -webkit-background-clip: text; background-clip: text; color: transparent;">
+                        Chintan Shah
+                    </h2>
+                    <p style="color: var(--gray);">MS MIS @ Texas A&amp;M • Data/Analytics • GenAI • Full Stack</p>
+                </div>
+
+                <div class="social-links">
+                    <!-- Replace # with your real profile links -->
+                    <a href="https://github.com/chintan-22" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/chintanshah02/" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:shahchintan0204@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+19795746433" class="social-link" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> <b>Chintan Shah</b>, All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
