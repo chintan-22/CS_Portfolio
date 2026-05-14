@@ -248,7 +248,8 @@ window.addEventListener("DOMContentLoaded", () => {
             "etl", "dashboard", "dashboards", "nlp", "transformers", "opencv", "twilio", "ml", "data",
             "analytics", "genai", "pipeline", "automation", "schema", "data quality", "role-based",
             "clip", "gemma", "multimodal", "mlflow", "github actions", "slack", "rag", "langchain",
-            "chromadb", "hugging face", "mistral"
+            "chromadb", "hugging face", "mistral", "next.js", "typescript", "react", "tailwind",
+            "groq apis", "whisper", "gpt-oss"
         ];
         const lower = text.toLowerCase();
         keywords.forEach(k => {
