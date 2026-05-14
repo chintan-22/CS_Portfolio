@@ -117,17 +117,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
 
 function highlightNavLink() {
     let current = '';
-    sections.forEach(section => {
+    const sectionMap = {
+        leadership: 'journey',
+        awards: 'projects',
+        certifications: 'projects',
+    };
+
+    document.querySelectorAll('section, footer#contact').forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
         const navHeight = nav.offsetHeight;
         if (window.scrollY >= (sectionTop - navHeight - 100)) {
-            current = section.getAttribute('id');
+            const id = section.getAttribute('id');
+            current = sectionMap[id] || id;
         }
     });
 
@@ -144,135 +149,20 @@ const styleActive = document.createElement('style');
 styleActive.textContent = `
         .nav-links a.active,
         .mobile-nav a.active {
-            color: var(--primary) !important;
+            color: var(--secondary) !important;
         }
-        
+
         .nav-links a.active::after {
             width: 100% !important;
         }
-        
+
         .mobile-nav a.active {
-            background: rgba(99, 102, 241, 0.15) !important;
+            background: rgba(204, 0, 0, 0.16) !important;
         }
     `;
 document.head.appendChild(styleActive);
 
-function showSecurityPopup(message) {
-    const existingPopup = document.getElementById('securityPopup');
-    const existingOverlay = document.getElementById('securityPopupOverlay');
-    if (existingPopup) existingPopup.remove();
-    if (existingOverlay) existingOverlay.remove();
-    const overlay = document.createElement('div');
-    overlay.id = 'securityPopupOverlay';
-    document.body.appendChild(overlay);
-    const popup = document.createElement('div');
-    popup.id = 'securityPopup';
-    popup.innerHTML = `
-                <div style="margin-bottom: 20px;">
-                    <div style="width: 60px; height: 60px; background: var(--gradient-1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                        <i class="fas fa-shield-alt" style="font-size: 24px; color: white;"></i>
-                    </div>
-                    <h3 style="color: white; margin-bottom: 10px;">Security Notice</h3>
-                    <p style="color: var(--gray); line-height: 1.5;">${message}</p>
-                </div>
-                <button id="closePopup" style="
-                    background: var(--gradient-1);
-                    color: white;
-                    border: none;
-                    padding: 12px 30px;
-                    border-radius: 8px;
-                    font-weight: 600;
-                    cursor: pointer;
-                    font-size: 1rem;
-                    transition: all 0.3s ease;
-                ">Understood</button>
-            `;
-    document.body.appendChild(popup);
-    document.getElementById('closePopup').addEventListener('click', function() {
-        popup.remove();
-        overlay.remove();
-    });
-    overlay.addEventListener('click', function() {
-        popup.remove();
-        overlay.remove();
-    });
-    setTimeout(() => {
-        if (document.body.contains(popup)) {
-            popup.remove();
-            overlay.remove();
-        }
-    }, 5000);
-}
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-    showSecurityPopup('Right-click is disabled on this page.');
-    return false;
-});
-
-document.addEventListener('keydown', function(e) {
-
-    if (e.key === 'F12' || e.keyCode === 123) {
-        e.preventDefault();
-        showSecurityPopup('Developer tools are disabled.');
-        return false;
-    }
-
-    if ((e.ctrlKey && e.shiftKey && e.key === 'I') || (e.metaKey && e.altKey && e.key === 'i')) {
-        e.preventDefault();
-        showSecurityPopup('Developer tools are disabled.');
-        return false;
-    }
-
-    if ((e.ctrlKey && e.shiftKey && e.key === 'J') || (e.metaKey && e.altKey && e.key === 'j')) {
-        e.preventDefault();
-        showSecurityPopup('Developer tools are disabled.');
-        return false;
-    }
-
-    if ((e.ctrlKey && e.key === 'u') || (e.metaKey && e.key === 'u')) {
-        e.preventDefault();
-        showSecurityPopup('Viewing page source is disabled.');
-        return false;
-    }
-
-    if ((e.ctrlKey && e.shiftKey && e.key === 'C') || (e.metaKey && e.altKey && e.key === 'c')) {
-        e.preventDefault();
-        showSecurityPopup('Inspect element is disabled.');
-        return false;
-    }
-});
-
-document.addEventListener('selectstart', function(e) {
-    e.preventDefault();
-    return false;
-});
-
-document.addEventListener('dragstart', function(e) {
-    if (e.target.tagName === 'IMG') {
-        e.preventDefault();
-        return false;
-    }
-});
-
-
-let devtoolsOpen = false;
-setInterval(() => {
-    const start = performance.now();
-    console.debug('DevTools Check');
-    const end = performance.now();
-
-    if (end - start > 100) {
-        if (!devtoolsOpen) {
-            devtoolsOpen = true;
-            showSecurityPopup('Developer tools detected. Please close them.');
-        }
-    } else {
-        devtoolsOpen = false;
-    }
-    // Clear console to prevent spam
-    console.clear();
-
-}, 1000); // ===============================
+// ===============================
 // SUMMARY BOT (Portfolio Only) - INTERACTIVE + ALL SECTIONS
 // Paste at the VERY BOTTOM of script.js
 // (and DELETE your older chatbot block)
@@ -294,11 +184,11 @@ window.addEventListener("DOMContentLoaded", () => {
     // ✅ UPDATE THESE IDs if your HTML uses different ones.
     // Example: if Experience section is still <section id="journey"> then set experience: ["journey"]
     const sectionMap = {
-        overall: ["home", "education", "experience", "leadership", "projects", "skills", "awards", "certifications"],
+        overall: ["home", "education", "journey", "leadership", "projects", "skills", "awards", "certifications"],
 
         home: ["home"],
         education: ["education"],
-        experience: ["experience"], // <-- change to ["journey"] if your experience section is id="journey"
+        experience: ["journey"],
         leadership: ["leadership"],
         projects: ["projects"],
         skills: ["skills"],
@@ -356,7 +246,9 @@ window.addEventListener("DOMContentLoaded", () => {
         const keywords = [
             "python", "sql", "mariadb", "mongodb", "streamlit", "groq", "n8n", "aws", "power apps",
             "etl", "dashboard", "dashboards", "nlp", "transformers", "opencv", "twilio", "ml", "data",
-            "analytics", "genai", "pipeline", "automation", "schema", "data quality", "role-based"
+            "analytics", "genai", "pipeline", "automation", "schema", "data quality", "role-based",
+            "clip", "gemma", "multimodal", "mlflow", "github actions", "slack", "rag", "langchain",
+            "chromadb", "hugging face", "mistral"
         ];
         const lower = text.toLowerCase();
         keywords.forEach(k => {
@@ -506,5 +398,330 @@ window.addEventListener("DOMContentLoaded", () => {
         if (panel.contains(e.target) || fab.contains(e.target)) return;
         panel.classList.remove("open");
         panel.setAttribute("aria-hidden", "true");
+    });
+});
+
+// ===============================
+// F1 PIT-STOP EXPERIENCE LAYER
+// ===============================
+window.addEventListener("DOMContentLoaded", () => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const pitStops = [
+        { id: "home", number: "01", label: "GRID POSITION", dot: 0, lap: 8421 },
+        { id: "education", number: "02", label: "DRIVER PROFILE", dot: 1, lap: 16312 },
+        { id: "skills", number: "03", label: "TECHNICAL SPECS", dot: 2, lap: 24708 },
+        { id: "journey", number: "04", label: "RACE LOG", dot: 3, lap: 33146 },
+        { id: "leadership", number: "04", label: "RACE CONTROL", dot: 3, lap: 38804 },
+        { id: "projects", number: "05", label: "CHAMPIONSHIP WINS", dot: 4, lap: 46328 },
+        { id: "awards", number: "05", label: "PODIUM RESULTS", dot: 4, lap: 51701 },
+        { id: "certifications", number: "05", label: "GARAGE VALIDATION", dot: 4, lap: 56543 },
+        { id: "contact", number: "06", label: "PIT WALL", dot: 5, lap: 60204 },
+    ];
+
+    function formatLap(ms) {
+        const minutes = Math.floor(ms / 60000).toString().padStart(2, "0");
+        const seconds = Math.floor((ms % 60000) / 1000).toString().padStart(2, "0");
+        const millis = Math.floor(ms % 1000).toString().padStart(3, "0");
+        return `${minutes}:${seconds}.${millis}`;
+    }
+
+    function animateLapCounter(el, target) {
+        if (!el || el.dataset.complete === "true") return;
+        el.dataset.complete = "true";
+        if (reduceMotion) {
+            el.textContent = formatLap(target);
+            return;
+        }
+        const started = performance.now();
+        const duration = 1200;
+        function tick(now) {
+            const progress = Math.min((now - started) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = formatLap(target * eased);
+            if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    }
+
+    function addPitDashboard(target, stop) {
+        if (!target || target.querySelector(".pit-dashboard")) return;
+        target.classList.add("pit-stop");
+        target.dataset.pitNumber = stop.number;
+        target.dataset.pitLabel = stop.label;
+        target.dataset.pitDot = stop.dot;
+
+        const container = target.querySelector(".container");
+        if (!container) return;
+
+        const dashboard = document.createElement("div");
+        dashboard.className = "pit-dashboard";
+        dashboard.innerHTML = `
+            <div class="pit-stop-label">PIT STOP ${stop.number}<span>${stop.label}</span></div>
+            <div class="lap-time" data-target-lap="${stop.lap}">00:00.000</div>
+            <div class="drs-zone" aria-hidden="true"></div>
+        `;
+        container.insertBefore(dashboard, container.firstElementChild);
+    }
+
+    pitStops.forEach((stop) => addPitDashboard(document.getElementById(stop.id), stop));
+
+    const skills = document.getElementById("skills");
+    const journey = document.getElementById("journey");
+    if (skills && journey && skills.compareDocumentPosition(journey) & Node.DOCUMENT_POSITION_PRECEDING) {
+        journey.parentNode.insertBefore(skills, journey);
+    }
+
+    const educationIntro = document.querySelector("#education .section-title");
+    if (educationIntro && !educationIntro.querySelector(".cricket-note")) {
+        const note = document.createElement("p");
+        note.className = "cricket-note";
+        note.textContent = "🏏 Off the track: chasing leather on 22 yards";
+        educationIntro.appendChild(note);
+    }
+
+    const heroParagraph = document.querySelector(".hero-text p");
+    if (heroParagraph && !document.querySelector(".lights-out")) {
+        const lightsOut = document.createElement("div");
+        lightsOut.className = "lights-out";
+        lightsOut.textContent = "LIGHTS OUT AND AWAY WE GO";
+        heroParagraph.insertAdjacentElement("afterend", lightsOut);
+    }
+
+    const heroTitle = document.querySelector(".hero-text h1");
+    if (heroTitle && !heroTitle.dataset.timingReady) {
+        heroTitle.dataset.timingReady = "true";
+        let index = 0;
+        function wrapTextNodes(node) {
+            Array.from(node.childNodes).forEach((child) => {
+                if (child.nodeType === Node.TEXT_NODE) {
+                    const fragment = document.createDocumentFragment();
+                    child.textContent.split(/(\s+)/).forEach((part) => {
+                        if (!part) return;
+                        if (/^\s+$/.test(part)) {
+                            fragment.appendChild(document.createTextNode(" "));
+                            return;
+                        }
+
+                        const word = document.createElement("span");
+                        word.className = "hero-word";
+                        part.split("").forEach((char) => {
+                            const span = document.createElement("span");
+                            span.className = "hero-name-char";
+                            span.style.setProperty("--char-index", index);
+                            span.textContent = char;
+                            index += 1;
+                            word.appendChild(span);
+                        });
+                        fragment.appendChild(word);
+                    });
+                    child.replaceWith(fragment);
+                } else if (child.nodeType === Node.ELEMENT_NODE) {
+                    wrapTextNodes(child);
+                }
+            });
+        }
+        wrapTextNodes(heroTitle);
+    }
+
+    const skillGroups = ["POWER UNIT", "AERO PACKAGE", "SETUP"];
+    document.querySelectorAll("#skills .skill-category").forEach((category, categoryIndex) => {
+        if (!category.querySelector(".telemetry-group")) {
+            const group = document.createElement("div");
+            group.className = "telemetry-group";
+            group.textContent = skillGroups[categoryIndex] || "TELEMETRY";
+            const items = category.querySelector(".skill-items");
+            if (items) category.insertBefore(group, items);
+        }
+    });
+
+    const skillLevels = {
+        SQL: 88,
+        NoSQL: 80,
+        MariaDB: 86,
+        Excel: 82,
+        "Power BI": 84,
+        Tableau: 78,
+        "Data Cleaning": 90,
+        ETL: 87,
+        pandas: 86,
+        NumPy: 82,
+        "scikit-learn": 80,
+        "NLP Pipelines": 83,
+        OpenCV: 76,
+        ReactJS: 82,
+        JavaScript: 84,
+        "HTML/CSS": 89,
+        Java: 80,
+        Git: 85,
+        "VS Code": 90,
+        Hadoop: 72,
+        n8n: 78,
+    };
+
+    document.querySelectorAll("#skills .skill-item").forEach((item) => {
+        if (item.dataset.telemetryReady === "true") return;
+        const name = item.textContent.trim();
+        const level = skillLevels[name] || 78;
+        const filled = Math.round(level / 10);
+        const meter = `${"█".repeat(filled)}${"░".repeat(10 - filled)} ${level}%`;
+        item.dataset.telemetryReady = "true";
+        item.style.setProperty("--skill-level", `${level}%`);
+        item.innerHTML = `<span class="skill-name">${name}</span><span class="skill-meter">${meter}</span>`;
+    });
+
+    const timeline = document.querySelector(".journey-timeline");
+    if (timeline && !timeline.querySelector(".race-track-svg")) {
+        const track = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        track.setAttribute("class", "race-track-svg");
+        track.setAttribute("viewBox", "0 0 1000 900");
+        track.setAttribute("preserveAspectRatio", "none");
+        track.innerHTML = `<path d="M505 0 C440 120 580 180 500 300 C420 420 575 488 500 610 C425 728 545 790 500 900"></path>`;
+        timeline.prepend(track);
+    }
+
+    const pitObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const section = entry.target;
+            section.classList.add("pit-active");
+            animateLapCounter(section.querySelector(".lap-time"), Number(section.querySelector(".lap-time")?.dataset.targetLap || 0));
+            updateCircuitDots(Number(section.dataset.pitDot || 0));
+            updateRaceNav(section.id);
+        });
+    }, { threshold: 0.28, rootMargin: "-12% 0px -42% 0px" });
+
+    document.querySelectorAll(".pit-stop").forEach((section) => pitObserver.observe(section));
+
+    function updateCircuitDots(index) {
+        document.querySelectorAll("#circuitMap span").forEach((dot, dotIndex) => {
+            dot.classList.toggle("active", dotIndex === index);
+        });
+    }
+
+    function updateRaceNav(id) {
+        const sectionToNav = {
+            home: "home",
+            education: "education",
+            skills: "skills",
+            journey: "journey",
+            leadership: "journey",
+            projects: "projects",
+            awards: "projects",
+            certifications: "projects",
+            contact: "contact",
+        };
+        const navTarget = sectionToNav[id] || id;
+        document.querySelectorAll('.nav-links a, .mobile-nav a').forEach((link) => {
+            link.classList.toggle("active", link.getAttribute("href") === `#${navTarget}`);
+        });
+    }
+    updateCircuitDots(0);
+
+    const car = document.getElementById("f1ScrollCar");
+    const strip = document.querySelector(".f1-progress-strip");
+    const speedOverlay = document.getElementById("speedLinesOverlay");
+    const enableSpeedFlash = false;
+    let ticking = false;
+    let lastY = window.scrollY;
+    let flashTimeout;
+
+    function flashSpeedLines() {
+        if (!speedOverlay || reduceMotion) return;
+        speedOverlay.classList.remove("flash");
+        void speedOverlay.offsetWidth;
+        speedOverlay.classList.add("flash");
+        clearTimeout(flashTimeout);
+        flashTimeout = setTimeout(() => speedOverlay.classList.remove("flash"), 420);
+    }
+
+    function updateCar() {
+        ticking = false;
+        if (!car || !strip) return;
+        const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+        const progress = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
+        const available = Math.max(strip.getBoundingClientRect().height - car.getBoundingClientRect().height - 12, 0);
+        car.style.transform = `translateY(${available * progress}px)`;
+    }
+
+    window.addEventListener("scroll", () => {
+        const currentY = window.scrollY;
+        if (enableSpeedFlash && Math.abs(currentY - lastY) > 180) flashSpeedLines();
+        lastY = currentY;
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateCar);
+        }
+    }, { passive: true });
+    window.addEventListener("resize", updateCar);
+    updateCar();
+
+    const soundToggle = document.getElementById("soundToggle");
+    let audioContext;
+    let soundEnabled = false;
+
+    function getAudioContext() {
+        audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+        return audioContext;
+    }
+
+    function playTick() {
+        if (!soundEnabled) return;
+        const ctx = getAudioContext();
+        const oscillator = ctx.createOscillator();
+        const gain = ctx.createGain();
+        oscillator.type = "square";
+        oscillator.frequency.setValueAtTime(620, ctx.currentTime);
+        gain.gain.setValueAtTime(0.025, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+        oscillator.connect(gain).connect(ctx.destination);
+        oscillator.start();
+        oscillator.stop(ctx.currentTime + 0.05);
+    }
+
+    function playEngineRev() {
+        if (!soundEnabled) return;
+        const ctx = getAudioContext();
+        const oscillator = ctx.createOscillator();
+        const gain = ctx.createGain();
+        oscillator.type = "sawtooth";
+        oscillator.frequency.setValueAtTime(90, ctx.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(360, ctx.currentTime + 0.75);
+        oscillator.frequency.exponentialRampToValueAtTime(130, ctx.currentTime + 1.5);
+        gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.06, ctx.currentTime + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.5);
+        oscillator.connect(gain).connect(ctx.destination);
+        oscillator.start();
+        oscillator.stop(ctx.currentTime + 1.55);
+    }
+
+    if (soundToggle) {
+        soundToggle.addEventListener("mouseenter", playTick);
+        soundToggle.addEventListener("click", async () => {
+            soundEnabled = !soundEnabled;
+            soundToggle.setAttribute("aria-pressed", String(soundEnabled));
+            soundToggle.innerHTML = soundEnabled ? '<i class="fas fa-volume-high"></i>' : '<i class="fas fa-volume-xmark"></i>';
+            if (soundEnabled) {
+                await getAudioContext().resume();
+                playEngineRev();
+            }
+        });
+    }
+
+    let cricketBuffer = "";
+    const easterEgg = document.getElementById("cricketEasterEgg");
+    document.addEventListener("keydown", (event) => {
+        if (event.metaKey || event.ctrlKey || event.altKey) return;
+        if (event.key.length !== 1) return;
+        cricketBuffer = (cricketBuffer + event.key.toLowerCase()).slice(-7);
+        if (cricketBuffer === "cricket" && easterEgg) {
+            easterEgg.classList.add("show");
+            easterEgg.setAttribute("aria-hidden", "false");
+            setTimeout(() => {
+                easterEgg.classList.remove("show");
+                easterEgg.setAttribute("aria-hidden", "true");
+            }, 2000);
+        }
     });
 });
