@@ -1,42 +1,18 @@
-const floatingElements = document.getElementById('floatingElements');
-for (let i = 0; i < 15; i++) {
-    const element = document.createElement('div');
-    element.classList.add('floating-element');
-    const size = Math.random() * 200 + 50;
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-    const duration = Math.random() * 20 + 20;
-
-    element.style.width = `${size}px`;
-    element.style.height = `${size}px`;
-    element.style.left = `${x}%`;
-    element.style.top = `${y}%`;
-    element.style.animation = `float ${duration}s infinite ease-in-out`;
-
-    floatingElements.appendChild(element);
-}
-
-const style = document.createElement('style');
-style.textContent = `
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(20px, -20px) rotate(5deg); }
-            50% { transform: translate(-15px, 10px) rotate(-5deg); }
-            75% { transform: translate(10px, 15px) rotate(3deg); }
-        }
-    `;
-document.head.appendChild(style);
 
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const mobileNav = document.getElementById('mobileNav');
 const mobileOverlay = document.getElementById('mobileOverlay');
-const scrollDownArrow = document.querySelector('.scroll-down');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+mobileNav.inert = true;
 
 function toggleMobileMenu() {
     mobileMenuToggle.classList.toggle('active');
     mobileNav.classList.toggle('active');
     mobileOverlay.classList.toggle('active');
     document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    const isOpen = mobileNav.classList.contains('active');
+    mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+    mobileNav.inert = !isOpen;
 }
 
 function closeMobileMenu() {
@@ -44,9 +20,20 @@ function closeMobileMenu() {
     mobileNav.classList.remove('active');
     mobileOverlay.classList.remove('active');
     document.body.style.overflow = '';
+    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    mobileNav.inert = true;
 }
 
 mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && mobileNav.classList.contains('active')) {
+        closeMobileMenu();
+        mobileMenuToggle.focus();
+    }
+});
+window.matchMedia('(min-width: 901px)').addEventListener('change', event => {
+    if (event.matches) closeMobileMenu();
+});
 document.querySelectorAll('.mobile-nav a').forEach(link => {
     link.addEventListener('click', closeMobileMenu);
 });
@@ -62,7 +49,6 @@ fadeElements.forEach(element => {
     observer.observe(element);
 });
 const nav = document.getElementById('mainNav');
-let lastScrollTop = 0;
 window.addEventListener('scroll', function() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     if (scrollTop > 50) {
@@ -70,19 +56,16 @@ window.addEventListener('scroll', function() {
     } else {
         nav.classList.remove('scrolled');
     }
-    if (scrollTop > 100) {
-        scrollDownArrow.style.opacity = '0';
-        scrollDownArrow.style.visibility = 'hidden';
-        scrollDownArrow.style.transform = 'translateX(-50%) translateY(20px)';
-    } else {
-        scrollDownArrow.style.opacity = '1';
-        scrollDownArrow.style.visibility = 'visible';
-        scrollDownArrow.style.transform = 'translateX(-50%) translateY(0)';
-    }
-
-    lastScrollTop = scrollTop;
 });
 const scrollToTopBtn = document.getElementById('scrollToTop');
+const chatbotFab = document.getElementById('chatbotFab');
+const hero = document.getElementById('home');
+function updateChatbotVisibility() {
+    chatbotFab.classList.toggle('visible', window.scrollY > hero.offsetHeight - nav.offsetHeight);
+}
+window.addEventListener('scroll', updateChatbotVisibility, { passive: true });
+window.addEventListener('resize', updateChatbotVisibility);
+updateChatbotVisibility();
 window.addEventListener('scroll', function() {
     if (window.pageYOffset > 300) {
         scrollToTopBtn.classList.add('visible');
@@ -94,7 +77,7 @@ window.addEventListener('scroll', function() {
 scrollToTopBtn.addEventListener('click', function() {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: reduceMotion ? 'instant' : 'smooth'
     });
 });
 
@@ -111,7 +94,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const targetPosition = targetElement.offsetTop - headerHeight;
             window.scrollTo({
                 top: targetPosition,
-                behavior: 'smooth'
+                behavior: reduceMotion ? 'instant' : 'smooth'
             });
         }
     });
@@ -145,22 +128,6 @@ function highlightNavLink() {
 }
 
 window.addEventListener('scroll', highlightNavLink);
-const styleActive = document.createElement('style');
-styleActive.textContent = `
-        .nav-links a.active,
-        .mobile-nav a.active {
-            color: var(--secondary) !important;
-        }
-
-        .nav-links a.active::after {
-            width: 100% !important;
-        }
-
-        .mobile-nav a.active {
-            background: rgba(204, 0, 0, 0.16) !important;
-        }
-    `;
-document.head.appendChild(styleActive);
 
 // ===============================
 // SUMMARY BOT (Portfolio Only) - INTERACTIVE + ALL SECTIONS
@@ -402,327 +369,34 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// ===============================
-// F1 PIT-STOP EXPERIENCE LAYER
-// ===============================
+// Numbered section markers keep the motorsport detail focused on navigation.
 window.addEventListener("DOMContentLoaded", () => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const pitStops = [
-        { id: "home", number: "01", label: "GRID POSITION", dot: 0, lap: 8421 },
-        { id: "education", number: "02", label: "DRIVER PROFILE", dot: 1, lap: 16312 },
-        { id: "skills", number: "03", label: "TECHNICAL SPECS", dot: 2, lap: 24708 },
-        { id: "journey", number: "04", label: "RACE LOG", dot: 3, lap: 33146 },
-        { id: "leadership", number: "04", label: "RACE CONTROL", dot: 3, lap: 38804 },
-        { id: "projects", number: "05", label: "CHAMPIONSHIP WINS", dot: 4, lap: 46328 },
-        { id: "awards", number: "05", label: "PODIUM RESULTS", dot: 4, lap: 51701 },
-        { id: "certifications", number: "05", label: "GARAGE VALIDATION", dot: 4, lap: 56543 },
-        { id: "contact", number: "06", label: "PIT WALL", dot: 5, lap: 60204 },
+    const sections = [
+        { id: "education", number: "01", label: "Background" },
+        { id: "journey", number: "02", label: "Experience" },
+        { id: "leadership", number: "03", label: "Leadership" },
+        { id: "projects", number: "04", label: "Selected Work" },
+        { id: "skills", number: "05", label: "Technical Skills" },
+        { id: "awards", number: "06", label: "Recognition" },
+        { id: "certifications", number: "07", label: "Credentials" },
+        { id: "contact", number: "08", label: "Get In Touch" },
     ];
 
-    function formatLap(ms) {
-        const minutes = Math.floor(ms / 60000).toString().padStart(2, "0");
-        const seconds = Math.floor((ms % 60000) / 1000).toString().padStart(2, "0");
-        const millis = Math.floor(ms % 1000).toString().padStart(3, "0");
-        return `${minutes}:${seconds}.${millis}`;
-    }
-
-    function animateLapCounter(el, target) {
-        if (!el || el.dataset.complete === "true") return;
-        el.dataset.complete = "true";
-        if (reduceMotion) {
-            el.textContent = formatLap(target);
-            return;
-        }
-        const started = performance.now();
-        const duration = 1200;
-        function tick(now) {
-            const progress = Math.min((now - started) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = formatLap(target * eased);
-            if (progress < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-    }
-
-    function addPitDashboard(target, stop) {
-        if (!target || target.querySelector(".pit-dashboard")) return;
-        target.classList.add("pit-stop");
-        target.dataset.pitNumber = stop.number;
-        target.dataset.pitLabel = stop.label;
-        target.dataset.pitDot = stop.dot;
-
-        const container = target.querySelector(".container");
+    sections.forEach(({ id, number, label }) => {
+        const container = document.querySelector(`#${id} > .container`);
         if (!container) return;
-
-        const dashboard = document.createElement("div");
-        dashboard.className = "pit-dashboard";
-        dashboard.innerHTML = `
-            <div class="pit-stop-label">PIT STOP ${stop.number}<span>${stop.label}</span></div>
-            <div class="lap-time" data-target-lap="${stop.lap}">00:00.000</div>
-            <div class="drs-zone" aria-hidden="true"></div>
-        `;
-        container.insertBefore(dashboard, container.firstElementChild);
-    }
-
-    pitStops.forEach((stop) => addPitDashboard(document.getElementById(stop.id), stop));
-
-    const skills = document.getElementById("skills");
-    const journey = document.getElementById("journey");
-    if (skills && journey && skills.compareDocumentPosition(journey) & Node.DOCUMENT_POSITION_PRECEDING) {
-        journey.parentNode.insertBefore(skills, journey);
-    }
-
-    const educationIntro = document.querySelector("#education .section-title");
-    if (educationIntro && !educationIntro.querySelector(".cricket-note")) {
-        const note = document.createElement("p");
-        note.className = "cricket-note";
-        note.textContent = "🏏 Off the track: chasing leather on 22 yards";
-        educationIntro.appendChild(note);
-    }
-
-    const heroParagraph = document.querySelector(".hero-text p");
-    if (heroParagraph && !document.querySelector(".lights-out")) {
-        const lightsOut = document.createElement("div");
-        lightsOut.className = "lights-out";
-        lightsOut.textContent = "LIGHTS OUT AND AWAY WE GO";
-        heroParagraph.insertAdjacentElement("afterend", lightsOut);
-    }
-
-    const heroTitle = document.querySelector(".hero-text h1");
-    if (heroTitle && !heroTitle.dataset.timingReady) {
-        heroTitle.dataset.timingReady = "true";
-        let index = 0;
-        function wrapTextNodes(node) {
-            Array.from(node.childNodes).forEach((child) => {
-                if (child.nodeType === Node.TEXT_NODE) {
-                    const fragment = document.createDocumentFragment();
-                    child.textContent.split(/(\s+)/).forEach((part) => {
-                        if (!part) return;
-                        if (/^\s+$/.test(part)) {
-                            fragment.appendChild(document.createTextNode(" "));
-                            return;
-                        }
-
-                        const word = document.createElement("span");
-                        word.className = "hero-word";
-                        part.split("").forEach((char) => {
-                            const span = document.createElement("span");
-                            span.className = "hero-name-char";
-                            span.style.setProperty("--char-index", index);
-                            span.textContent = char;
-                            index += 1;
-                            word.appendChild(span);
-                        });
-                        fragment.appendChild(word);
-                    });
-                    child.replaceWith(fragment);
-                } else if (child.nodeType === Node.ELEMENT_NODE) {
-                    wrapTextNodes(child);
-                }
-            });
-        }
-        wrapTextNodes(heroTitle);
-    }
-
-    const skillGroups = ["POWER UNIT", "AERO PACKAGE", "SETUP"];
-    document.querySelectorAll("#skills .skill-category").forEach((category, categoryIndex) => {
-        if (!category.querySelector(".telemetry-group")) {
-            const group = document.createElement("div");
-            group.className = "telemetry-group";
-            group.textContent = skillGroups[categoryIndex] || "TELEMETRY";
-            const items = category.querySelector(".skill-items");
-            if (items) category.insertBefore(group, items);
-        }
+        const marker = document.createElement("div");
+        marker.className = "pit-dashboard";
+        marker.setAttribute("aria-hidden", "true");
+        const text = document.createElement("div");
+        text.className = "pit-stop-label";
+        text.append(document.createTextNode(number));
+        const name = document.createElement("span");
+        name.textContent = label;
+        text.append(name);
+        marker.append(text);
+        container.prepend(marker);
     });
 
-    const skillLevels = {
-        SQL: 88,
-        NoSQL: 80,
-        MariaDB: 86,
-        Excel: 82,
-        "Power BI": 84,
-        Tableau: 78,
-        "Data Cleaning": 90,
-        ETL: 87,
-        pandas: 86,
-        NumPy: 82,
-        "scikit-learn": 80,
-        "NLP Pipelines": 83,
-        OpenCV: 76,
-        ReactJS: 82,
-        JavaScript: 84,
-        "HTML/CSS": 89,
-        Java: 80,
-        Git: 85,
-        "VS Code": 90,
-        Hadoop: 72,
-        n8n: 78,
-    };
-
-    document.querySelectorAll("#skills .skill-item").forEach((item) => {
-        if (item.dataset.telemetryReady === "true") return;
-        const name = item.textContent.trim();
-        const level = skillLevels[name] || 78;
-        const filled = Math.round(level / 10);
-        const meter = `${"█".repeat(filled)}${"░".repeat(10 - filled)} ${level}%`;
-        item.dataset.telemetryReady = "true";
-        item.style.setProperty("--skill-level", `${level}%`);
-        item.innerHTML = `<span class="skill-name">${name}</span><span class="skill-meter">${meter}</span>`;
-    });
-
-    const timeline = document.querySelector(".journey-timeline");
-    if (timeline && !timeline.querySelector(".race-track-svg")) {
-        const track = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        track.setAttribute("class", "race-track-svg");
-        track.setAttribute("viewBox", "0 0 1000 900");
-        track.setAttribute("preserveAspectRatio", "none");
-        track.innerHTML = `<path d="M505 0 C440 120 580 180 500 300 C420 420 575 488 500 610 C425 728 545 790 500 900"></path>`;
-        timeline.prepend(track);
-    }
-
-    const pitObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const section = entry.target;
-            section.classList.add("pit-active");
-            animateLapCounter(section.querySelector(".lap-time"), Number(section.querySelector(".lap-time")?.dataset.targetLap || 0));
-            updateCircuitDots(Number(section.dataset.pitDot || 0));
-            updateRaceNav(section.id);
-        });
-    }, { threshold: 0.28, rootMargin: "-12% 0px -42% 0px" });
-
-    document.querySelectorAll(".pit-stop").forEach((section) => pitObserver.observe(section));
-
-    function updateCircuitDots(index) {
-        document.querySelectorAll("#circuitMap span").forEach((dot, dotIndex) => {
-            dot.classList.toggle("active", dotIndex === index);
-        });
-    }
-
-    function updateRaceNav(id) {
-        const sectionToNav = {
-            home: "home",
-            education: "education",
-            skills: "skills",
-            journey: "journey",
-            leadership: "journey",
-            projects: "projects",
-            awards: "projects",
-            certifications: "projects",
-            contact: "contact",
-        };
-        const navTarget = sectionToNav[id] || id;
-        document.querySelectorAll('.nav-links a, .mobile-nav a').forEach((link) => {
-            link.classList.toggle("active", link.getAttribute("href") === `#${navTarget}`);
-        });
-    }
-    updateCircuitDots(0);
-
-    const car = document.getElementById("f1ScrollCar");
-    const strip = document.querySelector(".f1-progress-strip");
-    const speedOverlay = document.getElementById("speedLinesOverlay");
-    const enableSpeedFlash = false;
-    let ticking = false;
-    let lastY = window.scrollY;
-    let flashTimeout;
-
-    function flashSpeedLines() {
-        if (!speedOverlay || reduceMotion) return;
-        speedOverlay.classList.remove("flash");
-        void speedOverlay.offsetWidth;
-        speedOverlay.classList.add("flash");
-        clearTimeout(flashTimeout);
-        flashTimeout = setTimeout(() => speedOverlay.classList.remove("flash"), 420);
-    }
-
-    function updateCar() {
-        ticking = false;
-        if (!car || !strip) return;
-        const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-        const progress = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
-        const available = Math.max(strip.getBoundingClientRect().height - car.getBoundingClientRect().height - 12, 0);
-        car.style.transform = `translateY(${available * progress}px)`;
-    }
-
-    window.addEventListener("scroll", () => {
-        const currentY = window.scrollY;
-        if (enableSpeedFlash && Math.abs(currentY - lastY) > 180) flashSpeedLines();
-        lastY = currentY;
-        if (!ticking) {
-            ticking = true;
-            requestAnimationFrame(updateCar);
-        }
-    }, { passive: true });
-    window.addEventListener("resize", updateCar);
-    updateCar();
-
-    const soundToggle = document.getElementById("soundToggle");
-    let audioContext;
-    let soundEnabled = false;
-
-    function getAudioContext() {
-        audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
-        return audioContext;
-    }
-
-    function playTick() {
-        if (!soundEnabled) return;
-        const ctx = getAudioContext();
-        const oscillator = ctx.createOscillator();
-        const gain = ctx.createGain();
-        oscillator.type = "square";
-        oscillator.frequency.setValueAtTime(620, ctx.currentTime);
-        gain.gain.setValueAtTime(0.025, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
-        oscillator.connect(gain).connect(ctx.destination);
-        oscillator.start();
-        oscillator.stop(ctx.currentTime + 0.05);
-    }
-
-    function playEngineRev() {
-        if (!soundEnabled) return;
-        const ctx = getAudioContext();
-        const oscillator = ctx.createOscillator();
-        const gain = ctx.createGain();
-        oscillator.type = "sawtooth";
-        oscillator.frequency.setValueAtTime(90, ctx.currentTime);
-        oscillator.frequency.exponentialRampToValueAtTime(360, ctx.currentTime + 0.75);
-        oscillator.frequency.exponentialRampToValueAtTime(130, ctx.currentTime + 1.5);
-        gain.gain.setValueAtTime(0.0001, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.06, ctx.currentTime + 0.08);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.5);
-        oscillator.connect(gain).connect(ctx.destination);
-        oscillator.start();
-        oscillator.stop(ctx.currentTime + 1.55);
-    }
-
-    if (soundToggle) {
-        soundToggle.addEventListener("mouseenter", playTick);
-        soundToggle.addEventListener("click", async () => {
-            soundEnabled = !soundEnabled;
-            soundToggle.setAttribute("aria-pressed", String(soundEnabled));
-            soundToggle.innerHTML = soundEnabled ? '<i class="fas fa-volume-high"></i>' : '<i class="fas fa-volume-xmark"></i>';
-            if (soundEnabled) {
-                await getAudioContext().resume();
-                playEngineRev();
-            }
-        });
-    }
-
-    let cricketBuffer = "";
-    const easterEgg = document.getElementById("cricketEasterEgg");
-    document.addEventListener("keydown", (event) => {
-        if (event.metaKey || event.ctrlKey || event.altKey) return;
-        if (event.key.length !== 1) return;
-        cricketBuffer = (cricketBuffer + event.key.toLowerCase()).slice(-7);
-        if (cricketBuffer === "cricket" && easterEgg) {
-            easterEgg.classList.add("show");
-            easterEgg.setAttribute("aria-hidden", "false");
-            setTimeout(() => {
-                easterEgg.classList.remove("show");
-                easterEgg.setAttribute("aria-hidden", "true");
-            }, 2000);
-        }
-    });
+    highlightNavLink();
 });

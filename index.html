@@ -286,89 +286,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chintan Shah | Red Bull Racing x Cricket</title>
+    <title>Chintan Shah | Data Analytics &amp; Full Stack Development</title>
+    <meta name="description" content="Chintan Shah's portfolio: energy market analytics, data engineering, applied AI, and full stack development. MS MIS at Texas A&amp;M University.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="background-animation"></div>
-    <div class="floating-elements" id="floatingElements"></div>
-    <div class="bull-watermark" aria-hidden="true">
-        <svg viewBox="0 0 180 120" role="img">
-            <path d="M24 72 C42 24, 66 16, 88 38 C60 42, 52 58, 58 79 C44 82, 32 80, 24 72 Z"></path>
-            <path d="M156 72 C138 24, 114 16, 92 38 C120 42, 128 58, 122 79 C136 82, 148 80, 156 72 Z"></path>
-            <path d="M64 70 C76 55, 104 55, 116 70 C108 90, 72 90, 64 70 Z"></path>
-        </svg>
-    </div>
-
-    <div class="f1-progress-strip" aria-hidden="true">
-        <div class="circuit-map" id="circuitMap">
-            <span data-dot="01"></span>
-            <span data-dot="02"></span>
-            <span data-dot="03"></span>
-            <span data-dot="04"></span>
-            <span data-dot="05"></span>
-            <span data-dot="06"></span>
-        </div>
-        <div class="f1-scroll-car" id="f1ScrollCar">
-            <div class="speed-trail">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <svg class="rb20-car" viewBox="0 0 240 92" role="img" aria-label="Simplified RB20-inspired F1 car">
-                <path class="car-shadow" d="M19 76 H218 C226 76 232 79 232 82 H12 C12 79 15 76 19 76 Z"></path>
-                <path class="rear-wing" d="M193 27 H231 V38 H198 L190 58 H181 Z"></path>
-                <path class="front-wing" d="M4 59 H54 L61 68 H15 C8 68 4 65 4 59 Z"></path>
-                <path class="body" d="M37 54 C67 39 94 33 129 35 L161 36 C180 37 190 49 202 60 L220 62 L220 70 L91 72 C70 72 52 68 37 59 Z"></path>
-                <path class="nose" d="M12 56 C24 49 44 48 69 52 L62 63 H12 Z"></path>
-                <path class="sidepod" d="M92 45 H154 C165 45 174 51 180 62 H80 C76 57 80 48 92 45 Z"></path>
-                <path class="halo" d="M111 32 C121 18 145 21 151 36 L144 38 C139 29 126 29 119 39 Z"></path>
-                <path class="fin" d="M143 19 L164 39 L136 37 Z"></path>
-                <circle class="wheel" cx="65" cy="68" r="16"></circle>
-                <circle class="wheel-core" cx="65" cy="68" r="7"></circle>
-                <circle class="wheel" cx="179" cy="68" r="18"></circle>
-                <circle class="wheel-core" cx="179" cy="68" r="8"></circle>
-                <text class="car-number" x="126" y="61">C</text>
-                <path class="yellow-flash" d="M84 51 H157 L165 58 H78 Z"></path>
-            </svg>
-        </div>
-    </div>
-    <div class="speed-lines-overlay" id="speedLinesOverlay" aria-hidden="true"></div>
-    <div class="cricket-easter-egg" id="cricketEasterEgg" aria-hidden="true">
-        <div class="scoreboard-card">
-            <span>WANKHEDE TIMING BOARD</span>
-            <strong>BATTING AVERAGE: Chintan Shah — NOT OUT ∞</strong>
-            <small>Current form: ████████░░</small>
-        </div>
-    </div>
 
     <nav id="mainNav">
         <div class="container nav-container">
             <a href="#" class="logo" aria-label="Chintan Shah home">
-                <span class="bull-mark" aria-hidden="true">
-                    <svg viewBox="0 0 48 34">
-                        <path d="M6 22 C10 8, 19 3, 24 11 C15 11, 12 17, 14 25 C10 25, 8 24, 6 22 Z"></path>
-                        <path d="M42 22 C38 8, 29 3, 24 11 C33 11, 36 17, 34 25 C38 25, 40 24, 42 22 Z"></path>
-                        <path d="M17 23 C20 17, 28 17, 31 23 C27 30, 21 30, 17 23 Z"></path>
-                    </svg>
-                </span>
+                <span class="brand-mark" aria-hidden="true">CS</span>
                 <span>Chintan Shah</span>
             </a>
             <div class="nav-links">
-                <a href="#home"><span>01</span> Grid</a>
-                <a href="#education"><span>02</span> Driver</a>
-                <a href="#skills"><span>03</span> Specs</a>
-                <a href="#journey"><span>04</span> Race Log</a>
-                <a href="#projects"><span>05</span> Wins</a>
-                <a href="#contact"><span>06</span> Pit Wall</a>
+                <a href="#home">Overview</a>
+                <a href="#education">Education</a>
+                <a href="#journey">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
             </div>
-            <button class="sound-toggle" id="soundToggle" aria-label="Toggle engine sound" aria-pressed="false">
-                <i class="fas fa-volume-xmark"></i>
-            </button>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+            <a href="./Chintan_Shah_Resume.pdf?v=35484f65d6fe" download="Chintan_Shah_Resume.pdf" class="nav-resume"><i class="fas fa-download" aria-hidden="true"></i> Resume</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation" aria-controls="mobileNav" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -377,22 +321,22 @@
 
         <div class="mobile-nav" id="mobileNav">
             <a href="#home" onclick="closeMobileMenu()">
-                <span>01</span> Grid Position
+                <span>01</span> Overview
             </a>
             <a href="#education" onclick="closeMobileMenu()">
-                <span>02</span> Driver Profile
-            </a>
-            <a href="#skills" onclick="closeMobileMenu()">
-                <span>03</span> Technical Specs
+                <span>02</span> Education
             </a>
             <a href="#journey" onclick="closeMobileMenu()">
-                <span>04</span> Race Log
+                <span>03</span> Experience
             </a>
             <a href="#projects" onclick="closeMobileMenu()">
-                <span>05</span> Championship Wins
+                <span>04</span> Projects
+            </a>
+            <a href="#skills" onclick="closeMobileMenu()">
+                <span>05</span> Skills
             </a>
             <a href="#contact" onclick="closeMobileMenu()">
-                <span>06</span> Pit Wall
+                <span>06</span> Contact
             </a>
         </div>
 
@@ -401,96 +345,51 @@
     <!-- Button Section -->
 
     <section id="home" class="hero">
-
+        <img class="hero-backdrop" src="assets/formula-one.jpg" alt="Red Bull Racing Formula 1 car on track" width="2000" height="1333" fetchpriority="high">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text fade-in">
+                <div class="hero-text">
                     <div class="hero-kicker">
-                        <i class="fas fa-flag-checkered"></i>
-                        Red Bull Racing fan | Cricket tactician | Data builder
+                        <i class="fas fa-flag-checkered" aria-hidden="true"></i>
+                        Red Bull Racing fan / Data. Systems. Performance.
                     </div>
-                    <h1>Hey! I’m <span>Chintan Shah</span></h1>
+                    <h1>Chintan Shah</h1>
+                    <p class="hero-role">Data analyst &amp; full stack developer</p>
                     <p>
-                        I build data-driven products end-to-end with race-day focus and a cricket captain’s patience from data modeling and ETL pipelines to dashboards, ML/NLP systems, and modern web experiences. I’m currently exploring roles in <strong>Data/Business Analytics</strong>, <strong>Project/Product</strong>,
-                        <strong>GenAI Development</strong>, and <strong>Full Stack Development</strong>.
+                        I turn data into useful products: analytics dashboards, reliable pipelines, and AI-powered
+                        web applications. MS MIS at Texas A&amp;M, exploring roles in analytics, product, and software development.
                     </p>
                     <div class="hero-actions">
-                        <a href="#journey" class="cta-button"><i class="fas fa-gauge-high"></i> Explore My Work</a>
-                        <a href="#projects" class="cta-button cta-button-secondary"><i class="fas fa-layer-group"></i> View Projects</a>
-                    </div>
-                    <div class="fan-strip" aria-label="Personal interests">
-                        <span><i class="fas fa-bolt"></i> Red Bull energy</span>
-                        <span><i class="fas fa-baseball-bat-ball"></i> Cricket mindset</span>
-                        <span><i class="fas fa-stopwatch"></i> Fast iterations</span>
+                        <a href="#journey" class="cta-button"><i class="fas fa-arrow-down" aria-hidden="true"></i> View Experience</a>
+                        <a href="#projects" class="cta-button cta-button-secondary"><i class="fas fa-arrow-right" aria-hidden="true"></i> Selected Projects</a>
                     </div>
                 </div>
-
-                <div class="hero-visual fade-in">
+                <div class="hero-visual">
                     <div class="floating-card">
                         <div class="card-content">
-
-                            <div class="fan-badge">
-                                <i class="fas fa-flag-checkered"></i>
-                                Red Bull Racing supporter
+                            <div class="profile-meta">
+                                <span class="profile-label">Based In</span>
+                                <strong>College Station, Texas</strong>
+                                <span>Analytics / AI / Full Stack</span>
                             </div>
-                            <h3 class="hero-card-title">Race-Day Builder</h3>
-                            <p>Data + Full Stack | GenAI-ready</p>
-
-                            <div class="location-chip">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>College Station, TX</span>
+                            <div class="profile-meta">
+                                <span class="profile-label">Education</span>
+                                <strong>MS MIS, Texas A&amp;M University</strong>
+                                <span>August 2025 &ndash; May 2027</span>
                             </div>
-
-                            <div class="status-panel">
-                                <p style="font-size: 0.9rem; margin-bottom: 5px;"><strong>Currently:</strong></p>
-                                <p style="font-size: 1.05rem; font-weight: 600; color: var(--accent);">
-                                    MS MIS @ Texas A&M (Aug 2025 – May 2027)
-                                </p>
-                            </div>
-
-                            <div class="mini-scoreboard">
-                                <div>
-                                    <span>Mode</span>
-                                    <strong>Pit Wall</strong>
-                                </div>
-                                <div>
-                                    <span>Style</span>
-                                    <strong>Powerplay</strong>
-                                </div>
-                                <div>
-                                    <span>Focus</span>
-                                    <strong>Ship</strong>
-                                </div>
-                            </div>
-
                             <div class="hero-card-actions">
-                                <a href="mailto:shahchintan0204@gmail.com" class="cta-button">
-                                    <i class="fas fa-envelope"></i> Email
-                                </a>
-                                <!-- Replace # with your real LinkedIn/GitHub URLs -->
-                                <a href="https://www.linkedin.com/in/chintanshah02/" class="cta-button cta-button-secondary">
-                                    <i class="fab fa-linkedin"></i> LinkedIn
-                                </a>
-                                <a href="https://github.com/chintan-22" class="cta-button cta-button-secondary">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                                <a href="./Chintan_Shah_Resume.pdf?v=35484f65d6fe" download="Chintan_Shah_Resume.pdf" class="cta-button">
-                                    <i class="fas fa-download"></i> Resume
-                                </a>
+                                <a href="mailto:shahchintan0204@gmail.com" class="cta-button" title="Email Chintan"><i class="fas fa-envelope" aria-hidden="true"></i> Email</a>
+                                <a href="https://www.linkedin.com/in/chintanshah02/" class="cta-button" title="LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+                                <a href="https://github.com/chintan-22" class="cta-button" title="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+                                <a href="./Chintan_Shah_Resume.pdf?v=35484f65d6fe" download="Chintan_Shah_Resume.pdf" class="cta-button resume-link"><i class="fas fa-download" aria-hidden="true"></i> Resume</a>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="scroll-down">
-            <a href="#education">
-                <i class="fas fa-chevron-down"></i>
-                <span>Scroll Down</span>
-            </a>
+            <div class="scroll-down">
+                <a href="#journey">Experience &amp; selected work <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+            </div>
         </div>
     </section>
 
@@ -759,10 +658,6 @@
                     <p style="margin-bottom: 12px;">
                         Includes: golden dataset testing, MLflow experiment tracking, drift detection, CI/CD quality gates, and Slack alerts.
                     </p>
-                    <div class="project-links">
-                        <span>Repo:</span>
-                        <span>Dashboard:</span>
-                    </div>
                     <div class="skill-items" style="margin-top: 14px;">
                         <div class="skill-item">Python</div>
                         <div class="skill-item">MLflow</div>
@@ -1108,7 +1003,7 @@
                     <h2 style="font-size: 1.8rem; margin-bottom: 10px; background: var(--gradient-1); -webkit-background-clip: text; background-clip: text; color: transparent;">
                         Chintan Shah
                     </h2>
-                    <p style="color: var(--gray);">MS MIS @ Texas A&amp;M | Data/Analytics | GenAI | Full Stack | F1 + Cricket fan</p>
+                    <p style="color: var(--gray);">Data analytics &amp; full stack development. Built with precision.</p>
                 </div>
 
                 <div class="social-links">
@@ -1119,9 +1014,9 @@
                     <a href="tel:+19795746433" class="social-link" aria-label="Phone"><i class="fas fa-phone"></i></a>
                 </div>
             </div>
-            <div class="fan-form">
-                <span>Fan since 2021</span>
-                <strong>Current form: ████████░░</strong>
+            <div class="footer-note">
+                <span>Off the clock: Red Bull Racing &amp; cricket.</span>
+                <a href="https://unsplash.com/photos/a-red-bull-racing-car-on-a-race-track-MyxG49FpjIM">Photography: G&aacute;bor Sz&#369;ts / Unsplash</a>
             </div>
 
             <div class="copyright">
@@ -1188,7 +1083,7 @@
         <div class="chatbot-header">
             <div>
                 <div class="chatbot-title">Summary Bot</div>
-                <div class="chatbot-subtitle">Summarizes this portfolio only.</div>
+                <div class="chatbot-subtitle">Chintan's experience &amp; projects</div>
             </div>
             <button class="chatbot-close" id="chatbotClose" aria-label="Close">
       <i class="fas fa-times"></i>
@@ -1208,7 +1103,7 @@
         </div>
 
         <div class="chatbot-footer">
-            <input type="text" id="chatbotInput" placeholder="Type: overall / experience / projects / leadership / skills" />
+            <input type="text" id="chatbotInput" aria-label="Ask about Chintan's portfolio" placeholder="Ask about my experience..." />
             <button class="chatbot-send" id="chatbotSend" aria-label="Send">
       <i class="fas fa-paper-plane"></i>
     </button>
